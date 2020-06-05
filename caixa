@@ -1,0 +1,66 @@
+def main():
+    print("="*20)
+    print("     BANCO VINI")
+    print("="*20)
+    c50 = 0
+    c20 = 0
+    c10 = 0
+    c1 = 0
+    resto50 = 0
+    resto20 = 0
+    resto10 = 0
+
+    while True:
+        n = int(input("Qual o valor que voce quer sacar? R$"))
+        if n >= 50:
+            c50 = n//50
+            resto50 = n % 50
+            if resto50 >= 20:
+                c20 = resto50 // 20
+                resto20 = resto50 % 20
+                if resto20 >= 10:
+                    c10 = resto20 // 10
+                    resto10 = resto20 % 10
+                    if resto10 < 10:
+                        c1 = resto10 // 1
+                elif resto20 < 10:
+                    c1 = n % 20
+            elif resto50 < 20:
+                c1 = n % 50
+        elif 50 > n >= 20:
+            c20 = n // 20
+            resto20 = n % 20
+            if resto20 >= 10:
+                c10 = resto20 // 10
+                resto10 = resto20 % 10
+                if resto10 < 10:
+                    c1 = resto10 // 1
+            elif resto20 < 10:
+                c1 = n % 20
+        elif 20 > n >= 10:
+            c10 = n // 10
+            resto10 = n % 10
+            if resto10 < 10:
+                c1 = resto10 // 1
+
+        elif n < 10:
+            c1 = n // 1
+        break
+    if c50 > 0:
+        print(f"Total de {c50} cedulas de R$50")
+        if c20 > 0:
+            print(f"Total de {c20} cedulas de R$20")
+        if c10 > 0:
+            print(f"Total de {c10} cedulas de R$10")
+        if c1 > 0:
+            print(f"Total de {c1} cedulas de R$1")
+    if c50 == 0:
+        if c20 > 0:
+            print(f"Total de {c20} cedulas de R$20")
+        if c10 > 0:
+            print(f"Total de {c10} cedulas de R$10")
+        if c1 > 0:
+            print(f"Total de {c1} cedulas de R$1")
+
+
+main()
